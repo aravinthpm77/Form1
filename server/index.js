@@ -28,18 +28,18 @@ app.post('/Employee', (req, res) => {
         age,
         Experience,
         Department,
-        Address,
+        
         EmployeeID,
         Salary,
         Destination
         
-    } = req.body;
+    } = req.body.data;
 
     const values = [
         Name,
         birthDate,
         Department,
-        Address,
+        
         EmployeeID,
         Salary,
         Destination,
@@ -50,7 +50,7 @@ app.post('/Employee', (req, res) => {
     const sanitizedValues = values.map(val => (val !== undefined ? val : null));
 
     db.execute(
-        'INSERT INTO employees (Name, DOB,  Department, Address, EmployeeID, Salary, Destination,age,Experience) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO employees (Name, DOB,  Department,  EmployeeID, Salary, Destination,age,Experience) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
         sanitizedValues,
         (error, results) => {
             if (error) {
